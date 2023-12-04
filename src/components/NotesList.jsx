@@ -1,7 +1,7 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 
-function NoteList({ notes, onDelete, onArchive, onActive }) {
+function NotesList({ notes, onDelete, onArchive, onActive }) {
   if (notes.length === 0) {
     return <p className='notes-list__empty-message'>Tidak ada catatan</p>;
   }
@@ -21,4 +21,4 @@ function NoteList({ notes, onDelete, onArchive, onActive }) {
   );
 }
 
-export default NoteList;
+export default NotesList;

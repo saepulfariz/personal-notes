@@ -1,9 +1,9 @@
 import React from 'react';
-import NoteHeader from './NoteHeader';
-import NoteBody from './NoteBody';
+import NotesHeader from './NotesHeader';
+import NotesBody from './NotesBody';
 import { getInitialData } from '../utils/index';
 
-class ContactApp extends React.Component {
+class NotesApp extends React.Component {
   constructor(props) {
     super(props);
 
@@ -69,8 +69,8 @@ class ContactApp extends React.Component {
   render() {
     return (
       <>
-        <NoteHeader searchNote={this.onSearchEventHandler} />
-        <NoteBody
+        <NotesHeader searchNote={this.onSearchEventHandler} />
+        <NotesBody
           addNote={this.onAddNoteEventHandler}
           notes={this.state.notes}
           querySearch={this.state.querySearch}
@@ -83,4 +83,4 @@ class ContactApp extends React.Component {
   }
 }
 
-export default ContactApp;
+export default NotesApp;

@@ -1,8 +1,8 @@
 import React from 'react';
 import NoteInput from './NoteInput';
-import NoteList from './NoteList';
+import NotesList from './NotesList';
 
-function NoteBody({
+function NotesBody({
   addNote,
   notes,
   querySearch,
@@ -25,14 +25,14 @@ function NoteBody({
     <div className='note-app__body'>
       <NoteInput addNote={addNote} />
       <h2>Catatan Aktif</h2>
-      <NoteList
+      <NotesList
         notes={activeNotes}
         onDelete={onDelete}
         onArchive={onArchive}
         onActive={onActive}
       />
       <h2>Arsip</h2>
-      <NoteList
+      <NotesList
         notes={archiveNotes}
         onDelete={onDelete}
         onArchive={onArchive}
@@ -42,4 +42,4 @@ function NoteBody({
   );
 }
 
-export default NoteBody;
+export default NotesBody;

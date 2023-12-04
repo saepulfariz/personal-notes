@@ -1,6 +1,6 @@
 import React from 'react';
 
-class NoteSearch extends React.Component {
+class NotesSearch extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,4 +29,4 @@ class NoteSearch extends React.Component {
   }
 }
 
-export default NoteSearch;
+export default NotesSearch;
