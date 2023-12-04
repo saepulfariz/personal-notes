@@ -9,13 +9,35 @@ class ContactApp extends React.Component {
     this.state = {
       notes: getInitialData(),
     };
+
+    this.onAddNoteEventHandler = this.onAddNoteEventHandler.bind(this);
+  }
+
+  onAddNoteEventHandler({ title, body }) {
+    this.setState((prevState) => {
+      return {
+        notes: [
+          ...prevState.notes,
+          {
+            id: +new Date(),
+            title,
+            body,
+            createdAt: new Date().toISOString(),
+            archived: false,
+          },
+        ],
+      };
+    });
   }
 
   render() {
     return (
       <>
         <NoteHeader />
-        <NoteBody notes={this.state.notes} />
+        <NoteBody
+          addNote={this.onAddNoteEventHandler}
+          notes={this.state.notes}
+        />
       </>
     );
   }
