@@ -6,8 +6,12 @@ import { getInitialData } from '../utils/index';
 class ContactApp extends React.Component {
   constructor(props) {
     super(props);
+
+    const notes = getInitialData();
+
     this.state = {
-      notes: getInitialData(),
+      notes: notes,
+      querySearch: '',
     };
 
     this.onAddNoteEventHandler = this.onAddNoteEventHandler.bind(this);
@@ -15,6 +19,8 @@ class ContactApp extends React.Component {
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchiveHandler = this.onArchiveHandler.bind(this);
     this.onActiveHandler = this.onActiveHandler.bind(this);
+
+    this.onSearchEventHandler = this.onSearchEventHandler.bind(this);
   }
 
   onAddNoteEventHandler({ title, body }) {
@@ -54,16 +60,23 @@ class ContactApp extends React.Component {
     });
   }
 
+  onSearchEventHandler({ query }) {
+    this.setState(() => {
+      return { querySearch: query };
+    });
+  }
+
   render() {
     return (
       <>
-        <NoteHeader />
+        <NoteHeader searchNote={this.onSearchEventHandler} />
         <NoteBody
           addNote={this.onAddNoteEventHandler}
+          notes={this.state.notes}
+          querySearch={this.state.querySearch}
           onDelete={this.onDeleteHandler}
           onArchive={this.onArchiveHandler}
           onActive={this.onActiveHandler}
-          notes={this.state.notes}
         />
       </>
     );
