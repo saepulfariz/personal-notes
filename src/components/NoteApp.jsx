@@ -11,6 +11,8 @@ class ContactApp extends React.Component {
     };
 
     this.onAddNoteEventHandler = this.onAddNoteEventHandler.bind(this);
+
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
   }
 
   onAddNoteEventHandler({ title, body }) {
@@ -30,12 +32,17 @@ class ContactApp extends React.Component {
     });
   }
 
+  onDeleteHandler(id) {
+    this.setState({ notes: this.state.notes.filter((note) => note.id !== id) });
+  }
+
   render() {
     return (
       <>
         <NoteHeader />
         <NoteBody
           addNote={this.onAddNoteEventHandler}
+          onDelete={this.onDeleteHandler}
           notes={this.state.notes}
         />
       </>
