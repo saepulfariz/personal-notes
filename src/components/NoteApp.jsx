@@ -1,7 +1,6 @@
 import React from 'react';
-import NoteList from './NoteList';
 import NoteHeader from './NoteHeader';
-import NoteInput from './NoteInput';
+import NoteBody from './NoteBody';
 import { getInitialData } from '../utils/index';
 
 class ContactApp extends React.Component {
@@ -15,15 +14,8 @@ class ContactApp extends React.Component {
   render() {
     return (
       <>
-        <div className='note-app__header'>
-          <NoteHeader />
-        </div>
-        <div className='note-app__body'>
-          <NoteInput />
-          <h2>Catatan Aktif</h2>
-          <NoteList notes={this.state.notes} />
-          <h2>Arsip</h2>
-        </div>
+        <NoteHeader />
+        <NoteBody notes={this.state.notes} />
       </>
     );
   }
