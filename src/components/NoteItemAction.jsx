@@ -1,12 +1,17 @@
 import React from 'react';
+import ButtonDelete from './ButtonDelete';
+import ButtonArchive from './ButtonArchive';
+import ButtonActive from './ButtonActive';
 
-function NoteItemAction({ id, onDelete }) {
+function NoteItemAction({ id, archived, onDelete, onArchive, onActive }) {
   return (
     <div className='note-item__action'>
-      <button className='note-item__delete-button' onClick={() => onDelete(id)}>
-        Delete
-      </button>
-      <button className='note-item__archive-button'>Arsipkan</button>
+      <ButtonDelete id={id} onDelete={onDelete} />
+      {archived ? (
+        <ButtonActive id={id} onActive={onActive} />
+      ) : (
+        <ButtonArchive id={id} onArchive={onArchive} />
+      )}
     </div>
   );
 }

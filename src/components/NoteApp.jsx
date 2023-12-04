@@ -13,6 +13,8 @@ class ContactApp extends React.Component {
     this.onAddNoteEventHandler = this.onAddNoteEventHandler.bind(this);
 
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onArchiveHandler = this.onArchiveHandler.bind(this);
+    this.onActiveHandler = this.onActiveHandler.bind(this);
   }
 
   onAddNoteEventHandler({ title, body }) {
@@ -36,6 +38,22 @@ class ContactApp extends React.Component {
     this.setState({ notes: this.state.notes.filter((note) => note.id !== id) });
   }
 
+  onArchiveHandler(id) {
+    this.setState({
+      notes: this.state.notes.map((note) =>
+        note.id === id ? { ...note, archived: true } : note
+      ),
+    });
+  }
+
+  onActiveHandler(id) {
+    this.setState({
+      notes: this.state.notes.map((note) =>
+        note.id === id ? { ...note, archived: false } : note
+      ),
+    });
+  }
+
   render() {
     return (
       <>
@@ -43,6 +61,8 @@ class ContactApp extends React.Component {
         <NoteBody
           addNote={this.onAddNoteEventHandler}
           onDelete={this.onDeleteHandler}
+          onArchive={this.onArchiveHandler}
+          onActive={this.onActiveHandler}
           notes={this.state.notes}
         />
       </>
